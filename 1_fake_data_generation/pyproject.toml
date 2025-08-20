@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "fake_data_generation"
+version = "0.1.0"
+description = "A Python project for generating fake data."
+authors = ["Your Name <your.email@example.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.1.1"
+faker = "^37.5.3"
+google-cloud-storage = "^3.3.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
