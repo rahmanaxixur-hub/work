@@ -2,6 +2,7 @@ version: '3.8'
 services:
   gcs-emulator:
     image: fsouza/fake-gcs-server:latest
+    container_name: gcs-emulator
     ports:
       - "4443:4443"
     command:
@@ -17,6 +18,21 @@ services:
       - gcs-data:/data
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4443/storage/v1/b"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  bq-emulator:
+    image: ghcr.io/goccy/bigquery-emulator:latest
+    container_name: bq-emulator
+    ports:
+      - "9050:9050"
+    environment:
+      - BIGQUERY_EMULATOR_HOST=0.0.0.0:9050
+    command:
+      - --project
+      - test-project
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9050"]
       interval: 10s
       timeout: 5s
       retries: 5
