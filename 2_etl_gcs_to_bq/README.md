@@ -10,3 +10,18 @@ Project for ETL from Google Cloud Storage to BigQuery.
 ## Usage
 
 Add usage instructions here.
+
+`
+cd infra
+docker compose build
+docker compose up airflow-init
+docker compose up -d
+
+hen, open Airflow UI:
+http://localhost:8080
+
+Login:
+
+username: airflow
+password: airflow
+`
